@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}
+Index 
+{% endblock %}
+
+
+{% block main %}
+<h1>readability.site</h1>
+<p>Use the web like it's 1999!</p>
+
+<p>Go to a page:</p>
+<form action="/read" method="get">
+	<label for="url">URL:</label>
+	<input type="url" placeholder="https://drewdevault.com/2021/09/23/Nitter-and-other-internet-reclamation-projects.html" name="url" id="url">
+	<br>
+
+	<label for="format">Format:</label>
+	<select name="format" id="format">
+		<option value="html" selected>HTML</option>
+		<option value="text">Plain text</option>
+		<option value="json">JSON</option>
+	</select>	
+	<br>
+
+
+	<label for="redirect">Redirect to plain text versions:</label>
+	<input type="checkbox" checked name="redirect" id="redirect">
+	<br>
+
+
+	<label for="ignore">Ignore compatibility warnings:</label>
+	<input type="checkbox" name="ignore" id="ignore">
+
+	<button type="submit">GO!</button>
+</form>
+{% endblock %}

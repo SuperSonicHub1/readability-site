@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ article.title }} 
+{% endblock %}
+
+
+{% block main %}
+<h1 id="title">{{ article.title }}</h1>
+
+<p>
+	<a href="/">Return Home</a>
+</p>
+<p>
+	<a href="{{ url.toString() }}"}>Original URL</a>
+</p>
+
+{% if article.excerpt %}
+<blockquote id="byline">{{article.excerpt}}</blockquote>
+{% endif %}
+
+{% if article.byline %}
+<p id="byline">{{article.byline}}</p>
+{% endif %}
+
+{% if article.siteName %}
+<p id="site-name">from {{article.siteName}}</p>
+{% endif %}
+
+<section id="content">
+	{{article.content | safe}}
+</section>
+
+<p>
+	<a href="#title">Return to Top</a>
+</p>
+<p>
+	<a href="/">Return Home</a>
+</p>
+<p>
+	<a href="{{ url.toString() }}">Original URL</a>
+</p>
+{% endblock %}

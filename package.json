@@ -1,0 +1,17 @@
+{
+  "name": "readability-site",
+  "version": "1.0.0",
+  "description": "Mozilla's Readability library as a service with some sprinkles on top.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Kyle Williams <kyle.anthony.williams2@gmail.com>",
+  "license": "Unlicense",
+  "dependencies": {
+    "@mozilla/readability": "^0.4.1",
+    "express": "^4.17.1",
+    "jsdom": "^17.0.0",
+    "nunjucks": "^3.2.3"
+  }
+}
