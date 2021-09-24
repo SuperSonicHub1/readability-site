@@ -10,3 +10,8 @@ body {
 body {
 	font-family: system-ui;
 }
+
+blockquote#excerpt {
+	border-left: thick solid grey;
+	padding-left: 1em;
+}
