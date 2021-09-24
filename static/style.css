@@ -1,0 +1,7 @@
+@import url(/static/style.css);
+
+/* Contributed by Drew DeVault (https://drewdevault.com/) */
+body {
+	max-width: 800px;
+	margin: 0 auto;
+}

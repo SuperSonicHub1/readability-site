@@ -7,6 +7,7 @@ const sites = require("./sites.js")
 const port = 8080
 
 const app = express()
+app.use('/static', express.static('static'))
 nunjucks.configure('views', {
 	autoescape: true,
 	express: app
