@@ -1,7 +1,12 @@
-@import url(/static/style.css);
+@import url(/static/normalize.css);
+@import url(/static/system-font.css);
 
 /* Contributed by Drew DeVault (https://drewdevault.com/) */
 body {
 	max-width: 800px;
 	margin: 0 auto;
+}
+
+body {
+	font-family: system-ui;
 }
