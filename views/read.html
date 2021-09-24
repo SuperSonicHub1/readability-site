@@ -6,14 +6,18 @@
 
 
 {% block main %}
-<h1 id="title">{{ article.title }}</h1>
+<nav>
+	<p>
+		<a href="/">Return Home</a>
+	</p>
+	<p>
+		<a href="{{ url.toString() }}"}>Original URL</a>
+	</p>
+</nav>
 
-<p>
-	<a href="/">Return Home</a>
-</p>
-<p>
-	<a href="{{ url.toString() }}"}>Original URL</a>
-</p>
+<hr>
+
+<h1 id="title">{{ article.title }}</h1>
 
 {% if article.excerpt %}
 <blockquote id="byline">{{article.excerpt}}</blockquote>
@@ -31,13 +35,17 @@
 	{{article.content | safe}}
 </section>
 
-<p>
-	<a href="#title">Return to Top</a>
-</p>
-<p>
-	<a href="/">Return Home</a>
-</p>
-<p>
-	<a href="{{ url.toString() }}">Original URL</a>
-</p>
+<hr>
+
+<nav>
+	<p>
+		<a href="#title">Return to Top</a>
+	</p>
+	<p>
+		<a href="/">Return Home</a>
+	</p>
+	<p>
+		<a href="{{ url.toString() }}">Original URL</a>
+	</p>
+</nav>
 {% endblock %}
