@@ -42,8 +42,10 @@ app.get('/read', async (req, res) => {
 
 	if (redirect && url.hostname in sites) {
 		const redirectURL = sites[url.hostname](url)
-		res.redirect(redirectURL)
-		return
+		if (redirectURL) {
+			res.redirect(redirectURL)
+			return
+		}
 	}
 
 	const article = await getReadabilityArticle(url)
