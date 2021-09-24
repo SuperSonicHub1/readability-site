@@ -45,11 +45,22 @@ app.get('/read', async (req, res) => {
 		res.redirect(redirectURL)
 		return
 	}
-		
 
 	const article = await getReadabilityArticle(url)
 
-	res.render('read', { article, url })
+	switch (format) {
+		case "html":
+			res.render('read', { article, url })
+			break
+		case "text":
+			res
+				.type("text/plain")
+				.send(article.textContent)
+			break
+		case "json":
+			res.json(article)
+			break
+	}
 })
 
 app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`))
