@@ -23,14 +23,23 @@ app.use((req, res, next) => {
 	next()
 })
 
+/**
+ * @param {object} res
+ * @param {string} message
+ * @param {number} [status=400]
+ */
+function error(res, message, status = 400) {
+	res
+		.status(status)
+		.send(message)
+}
+
 app.get('/', (req, res) => res.render('index'))
 app.get('/read', async (req, res) => {
 	const { query } = req
 
 	if (!("url" in query)) {
-		res
-			.status(400)
-			.send("Buddy, you didn't supply me a URL!")
+		error(res, "Buddy, you didn't supply me a URL!")
 		return
 	}
 
@@ -38,9 +47,7 @@ app.get('/read', async (req, res) => {
 	try {
 		url = new URL(query.url)
 	} catch (e) {
-		res
-			.status(400)
-			.send("Buddy, you gave me an invalid URL!")
+		error(res, "Buddy, you gave me an invalid URL!")
 		return
 	}
 
@@ -68,6 +75,11 @@ app.get('/read', async (req, res) => {
 	}
 
 	const article = await getReadabilityArticle(url)
+
+	if (!article) {
+		error(res, "Sorry, man; we weren't able to extract anything!", 500)
+		return
+	}
 
 	switch (format) {
 		case "html":

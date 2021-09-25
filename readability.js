@@ -6,12 +6,22 @@ const DOMPurify = createDOMPurify(new JSDOM('').window);
 
 /**
  * @param {URL} url
+ * @return {Document}
+ */
+async function getDocument(url) {
+	return await JSDOM.fromURL(url).window.document
+}
+
+/**
+ * @param {URL} url
  * @return {boolean}
  */
 async function readerable(url) {
-	const { document } = (
-		await JSDOM.fromURL(url)
-	).window
+	try {
+		const document = await getDocument(url)
+	} catch (e) {
+		return false
+	}
 
 	const readerable = isProbablyReaderable(document)
 	return readerable
@@ -19,15 +29,19 @@ async function readerable(url) {
 
 /**
  * @param {URL} url
+ * @return {object}
  */
 async function getReadabilityArticle(url) {
-	const { document } = (
-		await JSDOM.fromURL(url)
-	).window
+	try {
+		const document = await getDocument(url)
+	} catch (e) {
+		return null
+	}
 
 	const reader = new Readability(document)
 	const article = reader.parse()
-	article.content = DOMPurify.sanitize(article.content)
+	if (article)
+		article.content = DOMPurify.sanitize(article.content)
 	return article
 }
 
