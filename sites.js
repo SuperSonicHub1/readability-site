@@ -74,7 +74,13 @@ const sites = {
 		const base = "https://noslite.nl/"
 		const idRegex = /\d{7,}/
 
+		// https://nos.nl/
+		// https://noslite.nl/
 		if (url.pathname == "/") return new URL(base)
+
+		// https://nos.nl/l/2399240
+		// https://nos.nl/artikel/2399240-coronacheck-app-overbelast-qr-code-voor-horecabezoekers-niet-overal-op-te-vragen
+		// https://noslite.nl/l/2399240.html
 		if (url.pathname.startsWith("/artikel") || url.pathname.startsWith("/l")) {
 			const matches = idRegex.exec(url.pathname)
 			if (matches) return new URL(`/l/${matches[0]}.html`, base)
