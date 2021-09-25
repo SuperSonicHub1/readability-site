@@ -85,6 +85,20 @@ const sites = {
 			const matches = idRegex.exec(url.pathname)
 			if (matches) return new URL(`/l/${matches[0]}.html`, base)
 		}
+	},
+
+	"www.poandpo.com": (url) => {
+		const base = "https://lite.poandpo.com/"
+
+		// https://www.poandpo.com/
+		// https://lite.poandpo.com/
+
+		// https://www.poandpo.com/news
+		// https://lite.poandpo.com/news
+
+		// https://www.poandpo.com/news/uk-panic-fuel-buying-for-second-day/
+		// https://lite.poandpo.com/news/uk-panic-fuel-buying-for-second-day/
+		return new URL(url.pathname, base)
 	}
 }
 
