@@ -68,6 +68,17 @@ const sites = {
 		// https://www.csmonitor.com/World/Europe/2021/0924/In-Germany-s-elections-candidates-vie-to-be-more-Merkel
 		// https://www.csmonitor.com/layout/set/text/World/Europe/2021/0924/In-Germany-s-elections-candidates-vie-to-be-more-Merkel
 		else return new URL("." + url.pathname, base)
+	},
+
+	"nos.nl": (url) => {
+		const base = "https://noslite.nl/"
+		const idRegex = /\d{7,}/
+
+		if (url.pathname == "/") return new URL(base)
+		if (url.pathname.startsWith("/artikel") || url.pathname.startsWith("/l")) {
+			const matches = idRegex.exec(url.pathname)
+			if (matches) return new URL(`/l/${matches[0]}.html`, base)
+		}
 	}
 }
 
