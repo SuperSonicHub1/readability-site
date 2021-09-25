@@ -8,7 +8,7 @@ body {
 }
 
 body {
-	font-family: system-ui;
+	font-family: system-ui, sans-serif;
 }
 
 blockquote#excerpt {
