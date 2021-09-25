@@ -5,11 +5,6 @@
  * of poorly churning the full versions through Readability.
  */
 
-// https://greycoder.com/a-list-of-text-only-new-sites/
-// https://sjmulder.nl/en/textonly.html
-// https://www.poynter.org/tech-tools/2017/text-only-news-sites-are-slowly-making-a-comeback-heres-why/
-// https://duckduckgo.com/?q=text+only+news+sites&ia=web
-
 /** 
  * @callback Redirect
  * @param {URL} url
