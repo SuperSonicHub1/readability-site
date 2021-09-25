@@ -9,28 +9,49 @@ Index
 <h1>readability.site</h1>
 <p>Browse the web like it's 1999!</p>
 
-<p>Simplify a page:</p>
 <form action="/read" method="get">
-	<label for="url">URL:</label>
-	<input type="url" placeholder="https://drewdevault.com/2021/09/23/Nitter-and-other-internet-reclamation-projects.html" name="url" id="url">
-	<br>
+	<fieldset>
+		<legend>Simplify a page</legend>
 
-	<label for="format">Format:</label>
-	<select name="format" id="format">
-		<option value="html" selected>HTML</option>
-		<option value="text">Plain text</option>
-		<option value="json">JSON</option>
-	</select>	
-	<br>
+		<label for="url">URL:</label>
+		<input type="url" placeholder="https://drewdevault.com/2021/09/23/Nitter-and-other-internet-reclamation-projects.html" name="url" id="url">
+		<br>
 
-	<label for="redirect">Redirect to offical text-only sources:</label>
-	<input type="checkbox" checked name="redirect" id="redirect">
-	<br>
+		<label for="format">Format:</label>
+		<select name="format" id="format">
+			<option value="html" selected>HTML</option>
+			<option value="text">Plain text</option>
+			<option value="json">JSON</option>
+		</select>
+		<br>
 
-	<label for="ignore">Ignore compatibility warnings:</label>
-	<input type="checkbox" name="ignore" id="ignore">
-	<br>
+		<label for="redirect">Redirect to offical text-only sources:</label>
+		<input type="checkbox" checked name="redirect" id="redirect">
+		<br>
 
-	<button type="submit">GO!</button>
+		<label for="ignore">Ignore compatibility warnings:</label>
+		<input type="checkbox" name="ignore" id="ignore">
+		<br>
+
+		<button type="submit">GO!</button>
+	</fieldset>
+</form>
+
+<br>
+
+<form action="/bookmarklet" method="get">
+	<fieldset>
+		<legend>Create a bookmarklet</legend>
+
+		<label for="redirect_book">Redirect to offical text-only sources:</label>
+		<input type="checkbox" checked name="redirect" id="redirect_book">
+		<br>
+
+		<label for="ignore_book">Ignore compatibility warnings:</label>
+		<input type="checkbox" name="ignore" id="ignore_book">
+		<br>
+
+		<button type="submit">Create!</button>
+	</fieldset>
 </form>
 {% endblock %}

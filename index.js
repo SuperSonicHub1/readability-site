@@ -4,7 +4,9 @@ const nunjucks = require("nunjucks")
 const { getReadabilityArticle, readerable } = require("./readability.js")
 const sites = require("./sites.js")
 
+// Feel free to change the domain name and port to suit your needs!
 const port = 8080
+const domainName = "readability-site.supersonichub1.repl.co"
 
 const app = express()
 app.use('/static', express.static('static'))
@@ -94,6 +96,25 @@ app.get('/read', async (req, res) => {
 			res.json(article)
 			break
 	}
+})
+
+app.get('/bookmarklet', async (req, res) => {
+	const { query } = req
+	const redirect = (query.redirect || "on")
+	const ignore = (query.ignore || "off")
+
+	const script = `(function (window) {
+		const params = new URLSearchParams({
+			"redirect": ${JSON.stringify(redirect)},
+			"ignore": ${JSON.stringify(ignore)},
+			"url": window.location.toString(),
+		});
+		const url = "https://" + ${JSON.stringify(domainName)} + "/read?" + params;
+		window.location.assign(url);
+	})(window)`
+
+	const url = "javascript:" + script
+	res.render('bookmarklet', { url })
 })
 
 app.listen(port, () => console.log(`readability.site listening at http://localhost:${port}`))
