@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}
+Warning!
+{% endblock %}
+
+{% block main %}
+<p>
+	<b>Hey!</b>
+	Readability says that
+	<a href="{{ url }}">{{ url }}</a>
+	probably won't be parsed all that well.
+	Do you still want to
+	<a href="{{ path }}">continue</a>?
+</p>
+{% endblock %}

@@ -1,7 +1,7 @@
 const express = require("express")
 const nunjucks = require("nunjucks")
 
-const { getReadabilityArticle } = require("./readability.js")
+const { getReadabilityArticle, readerable } = require("./readability.js")
 const sites = require("./sites.js")
 
 const port = 8080
@@ -53,6 +53,16 @@ app.get('/read', async (req, res) => {
 		const redirectURL = sites[url.hostname](url)
 		if (redirectURL) {
 			res.redirect(redirectURL)
+			return
+		}
+	}
+
+	if (!ignore) {
+		if (!(await readerable(url))) {
+			const acceptURLSearchParams = new URLSearchParams({url, format, ignore: "on"})
+			const path = "/read?" + acceptURLSearchParams
+
+			res.render("warning", { path, url })
 			return
 		}
 	}

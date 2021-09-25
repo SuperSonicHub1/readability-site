@@ -6,6 +6,19 @@ const DOMPurify = createDOMPurify(new JSDOM('').window);
 
 /**
  * @param {URL} url
+ * @return {boolean}
+ */
+async function readerable(url) {
+	const { document } = (
+		await JSDOM.fromURL(url)
+	).window
+
+	const readerable = isProbablyReaderable(document)
+	return readerable
+}
+
+/**
+ * @param {URL} url
  */
 async function getReadabilityArticle(url) {
 	const { document } = (
@@ -18,4 +31,4 @@ async function getReadabilityArticle(url) {
 	return article
 }
 
-module.exports = { getReadabilityArticle }
+module.exports = { getReadabilityArticle, readerable }
