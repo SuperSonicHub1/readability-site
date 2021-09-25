@@ -55,6 +55,19 @@ const sites = {
 			// https://www.cbc.ca/lite/news/canada/british-columbia
 			else return new URL("." + url.pathname, base)
 		}
+	},
+
+	"www.csmonitor.com": (url) => {
+		const base = "https://www.csmonitor.com/layout/set/text/"
+		if (url.pathname.startsWith("/layout/set/text")) return url
+
+		// https://www.csmonitor.com/
+		// https://www.csmonitor.com/layout/set/text/textedition
+		else if (url.pathname == "/") return new URL("./textedition", base)
+
+		// https://www.csmonitor.com/World/Europe/2021/0924/In-Germany-s-elections-candidates-vie-to-be-more-Merkel
+		// https://www.csmonitor.com/layout/set/text/World/Europe/2021/0924/In-Germany-s-elections-candidates-vie-to-be-more-Merkel
+		else return new URL("." + url.pathname, base)
 	}
 }
 
