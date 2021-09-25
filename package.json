@@ -10,6 +10,7 @@
   "license": "Unlicense",
   "dependencies": {
     "@mozilla/readability": "^0.4.1",
+    "dompurify": "^2.3.3",
     "express": "^4.17.1",
     "jsdom": "^17.0.0",
     "nunjucks": "^3.2.3"
