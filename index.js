@@ -14,6 +14,15 @@ nunjucks.configure('views', {
 })
 app.set("view engine", "html")
 
+// Set a CSP header on every response
+app.use((req, res, next) => {
+	res.append(
+		'Content-Security-Policy',
+		"default-src 'self'; img-src *; media-src *; script-src 'none'"
+	)
+	next()
+})
+
 app.get('/', (req, res) => res.render('index'))
 app.get('/read', async (req, res) => {
 	const { query } = req
