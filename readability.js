@@ -9,7 +9,7 @@ const DOMPurify = createDOMPurify(new JSDOM('').window);
  * @return {Document}
  */
 async function getDocument(url) {
-	return await JSDOM.fromURL(url).window.document
+	return (await JSDOM.fromURL(url)).window.document
 }
 
 /**
@@ -17,8 +17,9 @@ async function getDocument(url) {
  * @return {boolean}
  */
 async function readerable(url) {
+	let document
 	try {
-		const document = await getDocument(url)
+		document = await getDocument(url)
 	} catch (e) {
 		console.error(e)
 		return false
@@ -33,8 +34,9 @@ async function readerable(url) {
  * @return {object}
  */
 async function getReadabilityArticle(url) {
+	let document
 	try {
-		const document = await getDocument(url)
+		document = await getDocument(url)
 	} catch (e) {
 		console.error(e)
 		return null
