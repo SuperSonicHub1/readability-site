@@ -20,6 +20,7 @@ async function readerable(url) {
 	try {
 		const document = await getDocument(url)
 	} catch (e) {
+		console.error(e)
 		return false
 	}
 
@@ -35,6 +36,7 @@ async function getReadabilityArticle(url) {
 	try {
 		const document = await getDocument(url)
 	} catch (e) {
+		console.error(e)
 		return null
 	}
 
