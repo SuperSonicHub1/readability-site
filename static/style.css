@@ -15,3 +15,9 @@ blockquote#excerpt {
 	border-left: thick solid grey;
 	padding-left: 1em;
 }
+
+/* Force images to stay within screen */
+img {
+	height: auto;
+	max-width: 100% !important;
+}
