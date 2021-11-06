@@ -99,17 +99,18 @@ app.get('/read', async (req, res) => {
 })
 
 app.get('/bookmarklet', async (req, res) => {
+	const {stringify} = JSON
 	const { query } = req
 	const redirect = (query.redirect || "on")
 	const ignore = (query.ignore || "off")
 
 	const script = `(function (window) {
 		const params = new URLSearchParams({
-			"redirect": ${JSON.stringify(redirect)},
-			"ignore": ${JSON.stringify(ignore)},
+			"redirect": ${stringify(redirect)},
+			"ignore": ${stringify(ignore)},
 			"url": window.location.toString(),
 		});
-		const url = "https://" + ${JSON.stringify(domainName)} + "/read?" + params;
+		const url = "https://" + ${stringify(domainName)} + "/read?" + params;
 		window.location.assign(url);
 	})(window)`
 
