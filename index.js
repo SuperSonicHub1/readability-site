@@ -55,7 +55,7 @@ app.get('/read', async (req, res) => {
 
 
 	const format = query.format || "html"
-	const redirect = (query.redirect || "on") === "on" ? true : false
+	const redirect = (query.redirect || "off") === "on" ? true : false
 	const ignore = (query.ignore || "off") === "on" ? true : false
 
 	if (redirect && url.hostname in sites) {
@@ -101,8 +101,8 @@ app.get('/read', async (req, res) => {
 app.get('/bookmarklet', async (req, res) => {
 	const {stringify} = JSON
 	const { query } = req
-	const redirect = (query.redirect || "on")
-	const ignore = (query.ignore || "off")
+	const redirect = query.redirect || "off"
+	const ignore = query.ignore || "off"
 
 	const script = `(function (window) {
 		const params = new URLSearchParams({
