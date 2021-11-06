@@ -76,7 +76,7 @@ app.get('/read', async (req, res) => {
 		}
 	}
 
-	const article = await getReadabilityArticle(url)
+	const article = await getReadabilityArticle(url, {redirect: redirect ? "on" : "off", ignore: ignore ? "on" : "off"})
 
 	if (!article) {
 		error(res, "Sorry, man; we weren't able to extract anything!", 500)
