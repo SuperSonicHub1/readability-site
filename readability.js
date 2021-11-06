@@ -2,7 +2,7 @@ const createDOMPurify = require('dompurify')
 const { JSDOM } = require("jsdom")
 const { Readability, isProbablyReaderable } = require("@mozilla/readability")
 
-const DOMPurify = createDOMPurify(new JSDOM('').window);
+const DOMPurify = createDOMPurify(new JSDOM('').window)
 const fragmentDocument = new JSDOM('').window.document
 
 /**
